@@ -203,7 +203,9 @@ public class DDMFormTemplateContextFactoryHelper {
 		Map<String, DDMFormField> ddmFormFields = ddmForm.getDDMFormFieldsMap(
 			true);
 
-		ddmFormRules.stream().flatMap(
+		Stream<DDMFormRule> ddmFormRulesStream = ddmFormRules.stream();
+
+		ddmFormRulesStream.flatMap(
 			ddmFormRule -> ddmFormRule.getActions().stream()
 		).filter(
 			this::isAutofillAction
